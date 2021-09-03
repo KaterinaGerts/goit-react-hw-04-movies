@@ -1,0 +1,16 @@
+.link {
+  margin: 0;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #808080;
+
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.activeLink {
+  text-decoration: underline;
+  color: #006400;
+}
+

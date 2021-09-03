@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Route } from 'react-router-dom';
-// import Cast from 'components/Cast';
-// import Reviews from 'components/Reviews';
+// import Cast from '../Cast';
+// import Reviews from '../Reviews';
 
 const MovieDetailsPage = () => {
   return (

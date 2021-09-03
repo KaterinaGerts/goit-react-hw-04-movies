@@ -1,17 +1,13 @@
 .container {
-  max-width: 320px;
-  background-color: silver;
-  text-align: center;
+  max-width: 1240px;
+  background-color: #fff;
+  text-align: center;  
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    width: 768px;
-  }
+/* @media screen and (min-width: 768px) {
+  width: 768px;
 }
 
 @media screen and (min-width: 1024px) {
-  .container {
-    width: 1024px;
-  }
-}
+  width: 1024px;
+} */
