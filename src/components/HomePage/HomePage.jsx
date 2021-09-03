@@ -5,15 +5,21 @@ import movieApi from 'services/movie-api';
 
 function HomePage() {
 
-  const [movies, setMovie] = useState([]);
-  
-  useEffect(() => {
-    movieApi
-    .fetchMovies(movies)
-    .then(setMovie)
-    
-  }, [movies]);
+  const [movies, setMovies] = useState([]);
 
+ 
+    useEffect(() => {
+      function getMovies(){
+        movieApi
+        .fetchMovies(movies)
+        .then(setMovies)
+       }
+       getMovies();
+      
+    }, [movies]);
+  
+ 
+  
   return (
     <div>
       {movies && (
