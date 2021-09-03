@@ -1,24 +1,20 @@
 import React from 'react';
 //import {Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import movieApi from 'services/movie-api';
+import moviesApi from 'services/movie-api';
 
 function HomePage() {
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState('');
 
  
     useEffect(() => {
-      function getMovies(){
-        movieApi
+      if(!movies) return;
+        moviesApi
         .fetchMovies(movies)
-        .then(setMovies)
-       }
-       getMovies();
+        .then(setMovies)     
       
-    }, [movies]);
-  
- 
+    }, [movies]); 
   
   return (
     <div>

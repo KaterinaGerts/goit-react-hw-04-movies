@@ -1,1 +1,1 @@
-export {default} from 'components/Cast';
+export {default} from './Cast';

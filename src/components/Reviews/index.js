@@ -1,1 +1,1 @@
-export {default} from 'components/Reviews';
+export {default} from './Reviews';

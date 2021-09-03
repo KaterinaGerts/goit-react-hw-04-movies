@@ -14,4 +14,8 @@ const KEY = '5f8f89b44874dae418398127927dd3d2';
     });
 }
 
-export default fetchMovies;
+const api = {
+  fetchMovies,
+}
+
+export default api;
