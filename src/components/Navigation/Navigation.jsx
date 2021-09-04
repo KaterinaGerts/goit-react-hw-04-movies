@@ -8,8 +8,11 @@ function Navigation() {
       <NavLink to="/" exact className={s.link} activeClassName={s.activeLink}>
         Home
       </NavLink>
-      <NavLink to="/movies" className={s.link} activeClassName={s.activeLink}>
+      <NavLink to="/movies" exact className={s.link} activeClassName={s.activeLink}>
         Movies
+      </NavLink>
+      <NavLink to="/movies/:movieId" className={s.link} activeClassName={s.activeLink}>
+        Movies Details
       </NavLink>
     </nav>
   );
