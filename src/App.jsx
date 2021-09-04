@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import Container from 'components/Container';
 import AppBar from 'components/AppBar';
 import HomePage from 'views/HomePage';
-//import MoviesPage from 'views/MoviesPage';
+import MoviesPage from 'views/MoviesPage';
 import MovieDetailsPage from 'views/MovieDetailsPage';
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
         <Route path="/" exact>
           <HomePage />
         </Route>
-        {/* <Route path="/movies" exact>      
+        <Route path="/movies" exact>      
           <MoviesPage />
-        </Route> */}
+        </Route>
         <Route path="/movies/:movieId">
           <MovieDetailsPage />
         </Route>        

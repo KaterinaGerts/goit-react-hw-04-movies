@@ -12,7 +12,7 @@ export function fetchPopularMovies() {
   return fetchWithErrorHandling(`${BASE_URL}trending/movie/day?api_key=${KEY}`,);   
 };
 
-export function fetchForSearchMovies() {
+export function fetchForSearchMovies(query) {
   return fetchWithErrorHandling(`${BASE_URL}search/movie?${KEY}&language=en-US&page=1&include_adult=false`,);   
 };
 

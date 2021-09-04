@@ -12,7 +12,7 @@ const MoviesList = ({movies}) => {
      {movies.map(({id, title, poster_path}) => (
        <li className={s.list} key={id}><Link to={`/movies/${id}`}>
        <img src={`${IMG_URL}${poster_path}`} alt={title} width="300" /></Link>   
-       <Link to={`/movies/${id}`}>{title}</Link>                          
+       <Link to={`/movies/${id}`} className={s.title}>{title}</Link>                          
        </li>
      ))}
    </ul>

@@ -8,8 +8,16 @@
 .list {
   display: inline-flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: column;  
 
   margin-right: 25px;
   margin-bottom: 20px;
+}
+
+.title {
+ text-decoration: none;
+
+ font-size: 18px;
+ font-weight: normal;
+ font-family:'Times New Roman', Times, serif;
 }
