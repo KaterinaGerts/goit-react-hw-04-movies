@@ -1,15 +1,18 @@
 import React from 'react';
-import { Link, useRouteMatch} from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import s from './MoviesList.module.css';
 
 const MoviesList = ({movies}) => {
-  const {url} = useRouteMatch();
+  // const {url} = useRouteMatch();
+
+  const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
  
   return (
-    <ul>
+    <ul className={s.movieList}>
      {movies.map(({id, title, poster_path}) => (
-       <li key={id}><Link to={`${url}/${id}`}>
-       {title}</Link>
-       <img src={poster_path} alt={title} />                      
+       <li className={s.list} key={id}><Link to={`/movies/${id}`}>
+       <img src={`${IMG_URL}${poster_path}`} alt={title} width="300" /></Link>   
+       <Link to={`/movies/${id}`}>{title}</Link>                          
        </li>
      ))}
    </ul>

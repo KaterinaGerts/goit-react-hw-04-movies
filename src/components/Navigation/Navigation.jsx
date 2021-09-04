@@ -10,10 +10,7 @@ function Navigation() {
       </NavLink>
       <NavLink to="/movies" exact className={s.link} activeClassName={s.activeLink}>
         Movies
-      </NavLink>
-      <NavLink to="/movies/:movieId" className={s.link} activeClassName={s.activeLink}>
-        Movies Details
-      </NavLink>
+      </NavLink>      
     </nav>
   );
 }

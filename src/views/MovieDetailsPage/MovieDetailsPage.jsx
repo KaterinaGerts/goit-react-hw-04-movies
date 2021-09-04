@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './MovieDetailsPage.module.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as moviesApi from 'services/movie-api';
@@ -9,6 +10,7 @@ import * as moviesApi from 'services/movie-api';
 const MovieDetailsPage = () => {
   const {movieId} = useParams();
   const [movie, setMovie] = useState(null);
+  const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
   useEffect(() => {    
     moviesApi
@@ -17,9 +19,9 @@ const MovieDetailsPage = () => {
   }, [movieId])
  
   return (
-    <div>
+    <div className={s.datailsContainer}>
       {movie && <>
-      <img src={movie.poster_path} alt={movie.title} />
+      <img src={`${IMG_URL}${ movie.poster_path}`} alt={movie.title} width="250" className={s.movieImage}/>
       <h2>{movie.title}</h2>      
       </>}
   
