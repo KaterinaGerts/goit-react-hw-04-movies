@@ -1,4 +1,14 @@
 .datailsContainer {
   margin: 0;
   margin-top: 20px;
+  margin-left: 20px;
+}
+
+.button {
+  margin-bottom: 10px; 
+  font-size: 14px;
+  font-weight: normal;
+  color: gray;
+  font-style: italic;
+  box-shadow: 3px 3px palevioletred, -0.3em 0 .4em gray;
 }
