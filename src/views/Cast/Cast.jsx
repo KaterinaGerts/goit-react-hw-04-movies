@@ -4,9 +4,11 @@ import Spinner from 'components/Loader';
 import { useState, useEffect } from 'react';
 import * as moviesApi from 'services/movie-api';
 import { Status } from 'constants/constants';
+import { useParams } from 'react-router';
 
 
  const Cast = () => {
+  const {movieId} = useParams();
   const [actorsData, setActorsData] = useState([]);
   
   const [status, setStatus] = useState(Status.IDLE);
@@ -22,7 +24,7 @@ import { Status } from 'constants/constants';
     };
 
     moviesApi
-      .fetchAboutActorsOfMovie()
+      .fetchAboutActorsOfMovie(movieId)
       .then(
         data => setActorsData( console.log(data.results.cast) ),
        
@@ -30,7 +32,7 @@ import { Status } from 'constants/constants';
       )
       .catch(error => setError(error), setStatus(Status.REJECTED));
     spiner();
-  }, [actorsData]);
+  }, [actorsData, movieId]);
 
   return (
     <div>
