@@ -20,7 +20,10 @@ function App() {
         </Route>
         <Route path="/movies/:movieId">
           <MovieDetailsPage />
-        </Route>        
+        </Route>  
+        <Route path="/">
+          <HomePage />
+        </Route>      
       </Switch>
     </Container>
   );
