@@ -7,7 +7,8 @@ import { Status } from 'constants/constants';
 
 
  const Cast = () => {
-  const [actorsData, setactorsData] = useState([]);
+  const [actorsData, setActorsData] = useState([]);
+  
   const [status, setStatus] = useState(Status.IDLE);
   const [error, setError] = useState(false);
 
@@ -23,7 +24,8 @@ import { Status } from 'constants/constants';
     moviesApi
       .fetchAboutActorsOfMovie()
       .then(
-        data => setactorsData(data.results.cast),
+        data => setActorsData( console.log(data.results.cast) ),
+       
         setStatus(Status.RESOLVED),
       )
       .catch(error => setError(error), setStatus(Status.REJECTED));

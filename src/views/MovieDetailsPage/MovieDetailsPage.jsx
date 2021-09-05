@@ -39,7 +39,7 @@ const MovieDetailsPage = () => {
       onClick={() => { history.push('/')}}>Go to back</button> <br/>
       <img src={`${IMG_URL}${ movie.poster_path}`} alt={movie.title} width="250" className={s.movieImage}/>
       <h2>{movie.title}</h2>  <br/> 
-      <Link to="/movies/:movieId/cast">Cast<Cast/></Link>   
+      <Link to={`/movies/:${movieId}/cast`}>Cast<Cast/></Link>   
       </>}
       {status === Status.REJECTED && <h1>{error}</h1>}
   
