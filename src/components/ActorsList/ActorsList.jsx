@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { IMG_URL } from 'constants/constants';
 import s from './ActorsList.module.css';
 import defaultImg from 'helpers/default-img.png'
@@ -32,5 +33,16 @@ const ActorsList = ({ cast }) => {
     </ul>
   );
 };
+
+ActorsList.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      profile_path: PropTypes.string,
+      character: PropTypes.string,
+      name: PropTypes.string,
+    }),
+  ),
+}
 
 export default ActorsList;

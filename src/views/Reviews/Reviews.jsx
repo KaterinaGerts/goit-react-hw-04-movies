@@ -6,7 +6,7 @@ import * as moviesApi from 'services/movie-api';
 import { Status } from 'constants/constants';
 import { useParams } from 'react-router';
 
-const Cast = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [review, setReview] = useState([]);
 
@@ -38,4 +38,4 @@ const Cast = () => {
   );
 };
 
-export default Cast;
+export default Reviews;

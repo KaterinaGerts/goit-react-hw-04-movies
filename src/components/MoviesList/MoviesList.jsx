@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import s from './MoviesList.module.css';
 import { IMG_URL } from 'constants/constants';
@@ -34,5 +35,15 @@ const MoviesList = ({ movies }) => {
     </ul>
   );
 };
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      poster_path: PropTypes.string,
+      title: PropTypes.string,     
+    }),
+  ),
+}
 
 export default MoviesList;
