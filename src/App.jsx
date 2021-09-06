@@ -5,9 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Container from 'components/Container';
 import AppBar from 'components/AppBar';
 import Spinner from 'components/Loader';
-// import HomePage from 'views/HomePage';
-// import MoviesPage from 'views/MoviesPage';
-// import MovieDetailsPage from 'views/MovieDetailsPage';
+
 
 const HomePage = lazy(() =>
   import('views/HomePage' /* webpackChunkName: "home" */),
