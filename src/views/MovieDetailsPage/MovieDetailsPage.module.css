@@ -8,7 +8,16 @@
   margin-bottom: 10px; 
   font-size: 14px;
   font-weight: normal;
-  color: gray;
+  color: #808080;
   font-style: italic;
-  box-shadow: 3px 3px palevioletred, -0.3em 0 .4em gray;
+  box-shadow: 3px 3px #d87093, -0.3em 0 .4em #808080;
+}
+
+.title {
+text-decoration: none;
+font-size: 25px;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
+font-style: italic;
+color: #2f4f4f;
 }

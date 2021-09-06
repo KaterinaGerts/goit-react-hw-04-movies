@@ -56,7 +56,7 @@ const MovieDetailsPage = () => {
             className={s.movieImage}
           />
           <h2>{movie.title}</h2> <br />
-          <Link to={`/movies/${movieId}/cast`}>
+          <Link to={`/movies/${movieId}/cast`} className={s.title}>
             Cast          
           </Link>
         </>

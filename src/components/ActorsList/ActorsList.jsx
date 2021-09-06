@@ -1,20 +1,36 @@
 import React from 'react';
 import { IMG_URL } from 'constants/constants';
 import s from './ActorsList.module.css';
+import defaultImg from 'helpers/default-img.png'
 
- const ActorsList = ({cast}) => {
+const ActorsList = ({ cast }) => {
   return (
-    <ul> {
-      cast.map(({id, name, profile_path, character}) => (
-        <li key={id}>
-           <img src={`${IMG_URL}${ profile_path}`} alt={character} width="50" className={s.actorImage}/>
-           <p>{name}</p>
-           <p>{character}</p>
-        </li>
-      ))}
-      
+    <ul className={s.actorContainer}>
+      {' '}
+      {cast.map(({ id, name, profile_path, character }) => {
+        const actorImg = profile_path
+        ? `${IMG_URL}${profile_path}`
+        : defaultImg;
+        return <li key={id} className={s.li}>
+            <img
+              src={actorImg}
+              alt={character}
+              width="140"
+              height="200"
+              className={s.actorImage}
+            />
+            <p className={s.title}>
+              <span className={s.titleDescr}>Actor:</span> {name}
+            </p>
+            <p className={s.title}>
+              {' '}
+              <span className={s.titleDescr}>Character:</span> {character}
+            </p>
+          </li>        
+      }
+      )}
     </ul>
-  )
-}
+  );
+};
 
 export default ActorsList;
