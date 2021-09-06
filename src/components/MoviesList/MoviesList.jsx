@@ -11,8 +11,8 @@ const MoviesList = ({ movies }) => {
     <ul className={s.movieList}>
       {movies.map(({ id, title, poster_path }) => (
         <li className={s.list} key={id}>
-          <Link to={{ pathname: `/movies/${id}`, state: { from: location } }}>
-            <img src={`${IMG_URL}${poster_path}`} alt={title} width="300" />
+          <Link className={s.link} to={{ pathname: `/movies/${id}`, state: { from: location } }}>
+            <img src={`${IMG_URL}${poster_path}`} alt={title} width="300" className={s.imageList}/>
             <p className={s.title}>{title}</p>
           </Link>
         </li>

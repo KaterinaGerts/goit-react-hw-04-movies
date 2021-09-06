@@ -9,6 +9,7 @@ import { Status } from 'constants/constants';
 import Spinner from 'components/Loader';
 import { Route } from 'react-router-dom';
 import Cast from '../Cast';
+import Reviews from '../Reviews';
 // import Reviews from '../Reviews';
 
 const MovieDetailsPage = () => {
@@ -49,22 +50,26 @@ const MovieDetailsPage = () => {
             Go to back
           </button>{' '}
           <br />
+          <div className={s.container}>
           <img
             src={`${IMG_URL}${movie.poster_path}`}
             alt={movie.title}
             width="250"
             className={s.movieImage}
           />
-          <h2>{movie.title}</h2> <br />
+          <h2 className={s.text}>{movie.title}</h2></div> <br />
           <Link to={`/movies/${movieId}/cast`} className={s.title}>
             Cast          
+          </Link>
+          <Link to={`/movies/${movieId}/reviews`} className={s.title}>
+          Reviews         
           </Link>
         </>
       )}
       {status === Status.REJECTED && <h1>{error}</h1>}
 
      <Route path="/movies/:movieId/cast" component={Cast} /> 
-      {/* <Route path="/movies/:movieId/reviews" component={Reviews} /> */}
+      <Route path="/movies/:movieId/reviews" component={Reviews} />
     </div>
   );
 };

@@ -4,8 +4,12 @@
   margin-left: 20px;
 }
 
+.container {
+  width: 250px;
+}
+
 .button {
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   font-size: 14px;
   font-weight: normal;
   color: #808080;
@@ -14,10 +18,22 @@
 }
 
 .title {
-text-decoration: none;
-font-size: 25px;
-font-weight: bold;
-font-family: 'Times New Roman', Times, serif;
-font-style: italic;
-color: #2f4f4f;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: #2f4f4f;
+}
+
+.movieImage {
+  box-shadow: 0 -5px 3px -3px #808080, 0 5px 3px -3px #808080;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  color: #2f4f4f;
 }
