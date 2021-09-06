@@ -13,7 +13,7 @@ export function fetchPopularMovies() {
 };
 
 export function fetchForSearchMovies(query) {
-  return fetchWithErrorHandling(`${BASE_URL}search/movie?${KEY}&language=en-US&page=1&include_adult=false`,);   
+  return fetchWithErrorHandling(`${BASE_URL}search/movie?api_key=${KEY}&language=en-US&query=${query}&page=1&include_adult=false`,);   
 };
 
 export function fetchInfoAboutMovies(id) {

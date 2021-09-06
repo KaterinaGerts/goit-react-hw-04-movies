@@ -7,7 +7,7 @@ import s from './ActorsList.module.css';
     <ul> {
       cast.map(({id, name, profile_path, character}) => (
         <li key={id}>
-           <img src={`${IMG_URL}${ profile_path}`} alt={character} width="250" className={s.actorImage}/>
+           <img src={`${IMG_URL}${ profile_path}`} alt={character} width="50" className={s.actorImage}/>
            <p>{name}</p>
            <p>{character}</p>
         </li>

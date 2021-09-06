@@ -1,63 +1,67 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import s from './MoviesPage.module.css';
 import { useState, useEffect } from 'react';
 // import { useParams } from 'react-router';
 import * as moviesApi from 'services/movie-api';
 import { Status } from 'constants/constants';
 import Spinner from 'components/Loader';
-import MovieSearch from 'components/MovieSearch';
+import MoviesList from 'components/MoviesList';
+import { useLocation, useHistory } from 'react-router';
 
 const MoviesPage = () => {
-  // const { movieId } = useParams();
-  const [query, setQuery] = useState('');
+  const location = useLocation();
+  const history = useHistory();
+
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
   const [error, setError] = useState(false);
 
-  // const handleFormSubmit = query => {
-  //   setQuery(query);
-  //   setMovies([]);
-  // };
+  const searchQuery = new URLSearchParams(location.search).get('query');
 
   useEffect(() => {
-    if (!query) {
+    if (!searchQuery) {
       return;
     }
 
-    const spinner = () => setStatus(Status.PENDING);
+    setStatus(Status.PENDING);
 
     moviesApi
-      .fetchForSearchMovies(query)
-      .then(movies => {
-        if (movies.length === 0) {
+      .fetchForSearchMovies(searchQuery)
+      .then(data => {
+        if (data.results.length === 0) {
           setStatus(Status.IDLE);
-          toast.info('Please, try again your movie is not defind!');
+          toast.error('Please, try again your movie is not defind!');
         } else {
-          setMovies(
-            query => [...query, ...movies],
-            setStatus(Status.RESOLVED),
-          );
+          setMovies([...data.results]);
+          setStatus(Status.RESOLVED);
         }
       })
-      .catch(error => setError(error), setStatus(Status.REJECTED));
-    spinner();
-  }, [movies, query]);
-
-  const handleChange = e => {
-    const value = e.currentTarget.value;
-    setQuery(value.toLowerCase());
-  };
+      .catch(error => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [searchQuery]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target.value);
-  }
+    const query = e.target.elements.movieName.value;
+    const queryNormalize = query.toLowerCase();
+    if (!queryNormalize) {
+      toast.info('Please, write your movie request!');
+      return;
+    }
+    history.push({
+      ...location,
+      search: `query=${queryNormalize}`,
+    });
+    e.target.reset();
+  };
 
   return (
     <>
       <form onSubmit={handleSubmit} className={s.inputContainer}>
-        <input type="input" onChange={handleChange} className={s.input} />
+        <input name="movieName" type="input" className={s.input} />
         <button type="submit" className={s.buttomSearch}>
           Find the movie
         </button>
@@ -67,11 +71,7 @@ const MoviesPage = () => {
       )}
       {status === Status.PENDING && <Spinner />}
       {status === Status.REJECTED && <h1>{error}</h1>}
-      {status === Status.RESOLVED && (
-        <MovieSearch movies={movies} />
-      )}
-
-      <ToastContainer autoClose={2000} />
+      {status === Status.RESOLVED && <MoviesList movies={movies} />}
     </>
   );
 };
