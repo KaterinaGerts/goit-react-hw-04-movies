@@ -6,7 +6,7 @@ import defaultImg from 'helpers/default-img.png'
 const ActorsList = ({ cast }) => {
   return (
     <ul className={s.actorContainer}>
-      {' '}
+      {/* {' '} */}
       {cast.map(({ id, name, profile_path, character }) => {
         const actorImg = profile_path
         ? `${IMG_URL}${profile_path}`
