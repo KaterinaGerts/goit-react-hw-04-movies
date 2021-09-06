@@ -13,22 +13,21 @@ function HomePage() {
 
   useEffect(() => {
   
-    const spiner = () => {
-      if(!movies) {setStatus(Status.PENDING)} 
-      else {setStatus(Status.RESOLVED)}
-    }
+   setStatus(Status.PENDING)
 
   moviesApi
       .fetchPopularMovies()
-      .then(data => setMovies(data.results), setStatus(Status.RESOLVED))     
-      .catch(error => setError(error), setStatus(Status.REJECTED))    
-      spiner()
-  }, [movies]);
+      .then(data => {setMovies(data.results); 
+        setStatus(Status.RESOLVED)})     
+      .catch(error => {setError(error);
+         setStatus(Status.REJECTED)})    
+    
+  }, []);
 
   return (
     <div>
       {status === Status.PENDING && <Spinner />}
-      {status === Status.RESOLVED && <MoviesList movies={movies} />}
+      {status === Status.RESOLVED && <MoviesList movies={movies} /> }
       {status === Status.REJECTED && <h1>{error}</h1>}
     </div>
   );

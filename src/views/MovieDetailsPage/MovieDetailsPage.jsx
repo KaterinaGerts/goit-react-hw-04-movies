@@ -20,16 +20,17 @@ const MovieDetailsPage = () => {
   
 
   useEffect(() => {   
-    const spiner = () => {
-      if(!movie) {setStatus(Status.PENDING)} 
-      else {setStatus(Status.RESOLVED)}
-    } 
+    
+    setStatus(Status.RESOLVED)
+
     moviesApi
     .fetchInfoAboutMovies(movieId)
-    .then(data => setMovie(data), setStatus(Status.RESOLVED))
-    .catch(error => setError(error), setStatus(Status.REJECTED))  
-    spiner();  
-  }, [movie, movieId])
+    .then(data => {setMovie(data); 
+      setStatus(Status.RESOLVED)})
+    .catch(error => {setError(error); 
+      setStatus(Status.REJECTED)})  
+   
+  }, [movieId])
  
   return (
     <div className={s.datailsContainer}>  
@@ -37,9 +38,9 @@ const MovieDetailsPage = () => {
      {status === Status.RESOLVED && <>
       <button type="button" className={s.button} 
       onClick={() => { history.push('/')}}>Go to back</button> <br/>
-      <img src={`${IMG_URL}${ movie.poster_path}`} alt={movie.title} width="250" className={s.movieImage}/>
+      <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} width="250" className={s.movieImage}/>
       <h2>{movie.title}</h2>  <br/> 
-      <Link to={`/movies/:${movieId}/cast`}>Cast<Cast/></Link>   
+      <Link to={`/movies/${movieId}/cast`}>Cast<Cast/></Link>   
       </>}
       {status === Status.REJECTED && <h1>{error}</h1>}
   
