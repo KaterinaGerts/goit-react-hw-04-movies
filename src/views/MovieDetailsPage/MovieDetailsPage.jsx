@@ -9,14 +9,11 @@ import { Status } from 'constants/constants';
 import Spinner from 'components/Loader';
 import { Route, Switch } from 'react-router-dom';
 
-const Cast = lazy(() =>
-  import('../Cast' /* webpackChunkName: "cast" */),
-);
+const Cast = lazy(() => import('../Cast' /* webpackChunkName: "cast" */));
 
 const Reviews = lazy(() =>
   import('../Reviews' /* webpackChunkName: "reviews" */),
 );
-
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -24,15 +21,14 @@ const MovieDetailsPage = () => {
   const [status, setStatus] = useState(Status.IDLE);
   const [error, setError] = useState(false);
   const history = useHistory();
-  const location = useLocation();
-  console.log(location);
+  const location = useLocation(); 
 
   useEffect(() => {
     setStatus(Status.PENDING);
 
     moviesApi
       .fetchInfoAboutMovies(movieId)
-      .then(data => {      
+      .then(data => {
         setMovie(data);
         setStatus(Status.RESOLVED);
       })
@@ -46,7 +42,7 @@ const MovieDetailsPage = () => {
     <div className={s.datailsContainer}>
       {status === Status.PENDING && <Spinner />}
       {status === Status.RESOLVED && (
-        <>
+        <div>
           <button
             type="button"
             className={s.button}
@@ -68,32 +64,48 @@ const MovieDetailsPage = () => {
               <h2 className={s.text}>{movie.title}</h2>
               <p className={s.movieText}>
                 <span className={s.span}> User score:</span>
-                {movie.vote_count}</p>
+                {movie.vote_count}
+              </p>
               <p className={s.movieText}>
                 <span className={s.span}>Overview:</span>
-                 {movie.overview}</p>
+                {movie.overview}
+              </p>
               <ul>
                 <span className={s.span}>Genres:</span>
-                
+
                 {movie.genres.map(({ id, name }) => (
-                  <li className={s.movieText} key={id}>{name}</li>
+                  <li className={s.movieText} key={id}>
+                    {name}
+                  </li>
                 ))}
               </ul>{' '}
             </div>
           </div>{' '}
           <br />
-          <Link to={`/movies/${movieId}/cast`} className={s.title}>
+          <Link
+            to={{
+              pathname: `/movies/${movieId}/cast`,
+              state: { from: location },
+            }}
+            className={s.title}
+          >
             Cast
           </Link>
-          <Link to={`/movies/${movieId}/reviews`} className={s.title}>
+          <Link
+            to={{
+              pathname: `/movies/${movieId}/reviews`,
+              state: { from: location },
+            }}
+            className={s.title}
+          >
             Reviews
           </Link>
-        </>
+        </div>
       )}
       {status === Status.REJECTED && <h1>{error}</h1>}
       <Switch>
-      <Route path="/movies/:movieId/cast" component={Cast} />
-      <Route path="/movies/:movieId/reviews" component={Reviews} />
+        <Route path="/movies/:movieId/cast" component={Cast} />
+        <Route path="/movies/:movieId/reviews" component={Reviews} />
       </Switch>
     </div>
   );
