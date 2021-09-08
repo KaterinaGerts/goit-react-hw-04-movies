@@ -6,7 +6,6 @@ import Container from 'components/Container';
 import AppBar from 'components/AppBar';
 import Spinner from 'components/Loader';
 
-
 const HomePage = lazy(() =>
   import('views/HomePage' /* webpackChunkName: "home" */),
 );
@@ -21,21 +20,20 @@ const MovieDetailsPage = lazy(() =>
 function App() {
   return (
     <Container>
-
-      <AppBar/>
+      <AppBar />
       <Suspense fallback={<Spinner />}>
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/movies" exact>      
-          <MoviesPage />
-        </Route>
-        <Route path="/movies/:movieId">
-          <MovieDetailsPage />
-        </Route>  
-        <Redirect to='/'/>       
-      </Switch>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/movies" exact>
+            <MoviesPage />
+          </Route>
+          <Route path="/movies/:movieId">
+            <MovieDetailsPage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
       </Suspense>
       <ToastContainer autoClose={2000} />
     </Container>

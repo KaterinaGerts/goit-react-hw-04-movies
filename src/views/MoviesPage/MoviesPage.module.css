@@ -4,22 +4,46 @@
 }
 
 .input {
+  width: 400px;
+  height: 30px;
   margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .input {
+    width: 300px;
+    height: 20px;
+    margin-bottom: 10px;
+  }
 }
 
 .div {
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: bold;
   color: gray;
   font-style: italic;
   text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+  .div {
+    font-size: 20px;
+  }
+}
+
 .buttomSearch {
-  font-size: 14px;
+  height: 35px;
+  font-size: 18px;
   font-weight: normal;
   color: gray;
   font-style: italic;
   box-shadow: 3px 3px palevioletred, -0.3em 0 .4em gray;
+}
+
+@media screen and (max-width: 768px) {
+  .buttomSearch {
+    height: 25px;
+    font-size: 14px;
+  }
 }

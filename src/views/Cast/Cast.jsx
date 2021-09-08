@@ -18,7 +18,7 @@ const Cast = () => {
 
     moviesApi
       .fetchAboutActorsOfMovie(movieId)
-      .then(data => {       
+      .then(data => {
         setActorsData(data.cast);
 
         setStatus(Status.RESOLVED);

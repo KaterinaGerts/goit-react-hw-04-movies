@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IMG_URL } from 'constants/constants';
 import s from './ActorsList.module.css';
-import defaultImg from 'helpers/default-img.png'
+import defaultImg from 'helpers/default-img.png';
 
 const ActorsList = ({ cast }) => {
   return (
     <ul className={s.actorContainer}>
-      {/* {' '} */}
       {cast.map(({ id, name, profile_path, character }) => {
         const actorImg = profile_path
-        ? `${IMG_URL}${profile_path}`
-        : defaultImg;
-        return <li key={id} className={s.li}>
+          ? `${IMG_URL}${profile_path}`
+          : defaultImg;
+        return (
+          <li key={id} className={s.li}>
             <img
               src={actorImg}
               alt={character}
@@ -27,9 +27,9 @@ const ActorsList = ({ cast }) => {
               {' '}
               <span className={s.titleDescr}>Character:</span> {character}
             </p>
-          </li>        
-      }
-      )}
+          </li>
+        );
+      })}
     </ul>
   );
 };
@@ -43,6 +43,6 @@ ActorsList.propTypes = {
       name: PropTypes.string,
     }),
   ),
-}
+};
 
 export default ActorsList;

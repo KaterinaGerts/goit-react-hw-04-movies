@@ -41,9 +41,9 @@ MoviesList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       poster_path: PropTypes.string,
-      title: PropTypes.string,     
+      title: PropTypes.string,
     }),
   ),
-}
+};
 
 export default MoviesList;

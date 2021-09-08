@@ -7,8 +7,6 @@
 .container {
   display: flex;
   width: 600px;
- 
- 
 }
 
 .button {
@@ -46,7 +44,7 @@
   margin-right: 5px;
   font-size: 16px;
   font-weight: bold;
-  font-family: 'Times New Roman', Times, serif; 
+  font-family: 'Times New Roman', Times, serif;
 
   color: #c71585;
 }
@@ -59,8 +57,7 @@
   color: #2f4f4f;
 }
 
-ul{  
+ul {
   margin: 0;
   padding: 0;
 }
-

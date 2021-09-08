@@ -1,12 +1,12 @@
 import Navigation from '../Navigation';
 import s from './AppBar.module.css';
 
- const AppBar = () => {
+const AppBar = () => {
   return (
     <header className={s.header}>
-      <Navigation/>
+      <Navigation />
     </header>
-  )
-}
+  );
+};
 
 export default AppBar;

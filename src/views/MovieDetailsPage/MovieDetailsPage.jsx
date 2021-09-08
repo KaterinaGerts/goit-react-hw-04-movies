@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './MovieDetailsPage.module.css';
+import PropTypes from 'prop-types';
 import { useState, useEffect, lazy } from 'react';
 import { useParams } from 'react-router';
 import * as moviesApi from 'services/movie-api';
@@ -22,7 +23,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(false);
   const history = useHistory();
   const location = useLocation();
-  
+
   useEffect(() => {
     setStatus(Status.PENDING);
 
@@ -85,7 +86,7 @@ const MovieDetailsPage = () => {
           <Link
             to={{
               pathname: `/movies/${movieId}/cast`,
-               state: { from: location },
+              state: { from: location },
             }}
             className={s.title}
           >
@@ -94,7 +95,7 @@ const MovieDetailsPage = () => {
           <Link
             to={{
               pathname: `/movies/${movieId}/reviews`,
-               state: { from: location },
+              state: { from: location },
             }}
             className={s.title}
           >
@@ -109,6 +110,15 @@ const MovieDetailsPage = () => {
       </Switch>
     </div>
   );
+};
+
+MovieDetailsPage.propTypes = {
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,      
+      name: PropTypes.string,
+    }),
+  ),
 };
 
 export default MovieDetailsPage;

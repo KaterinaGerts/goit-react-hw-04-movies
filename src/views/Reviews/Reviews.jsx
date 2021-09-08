@@ -18,7 +18,7 @@ const Reviews = () => {
 
     moviesApi
       .fetchOfReviewOfMovie(movieId)
-      .then(data => {     
+      .then(data => {
         setReview(data.results);
 
         setStatus(Status.RESOLVED);
