@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,9 +34,7 @@ function App() {
         <Route path="/movies/:movieId">
           <MovieDetailsPage />
         </Route>  
-        <Route path="/">
-          <HomePage />
-        </Route>      
+        <Redirect to='/'/>       
       </Switch>
       </Suspense>
       <ToastContainer autoClose={2000} />
