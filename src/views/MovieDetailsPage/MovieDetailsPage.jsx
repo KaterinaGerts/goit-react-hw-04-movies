@@ -21,8 +21,8 @@ const MovieDetailsPage = () => {
   const [status, setStatus] = useState(Status.IDLE);
   const [error, setError] = useState(false);
   const history = useHistory();
-  const location = useLocation(); 
-
+  const location = useLocation();
+  
   useEffect(() => {
     setStatus(Status.PENDING);
 
@@ -85,7 +85,7 @@ const MovieDetailsPage = () => {
           <Link
             to={{
               pathname: `/movies/${movieId}/cast`,
-              state: { from: location },
+               state: { from: location },
             }}
             className={s.title}
           >
@@ -94,7 +94,7 @@ const MovieDetailsPage = () => {
           <Link
             to={{
               pathname: `/movies/${movieId}/reviews`,
-              state: { from: location },
+               state: { from: location },
             }}
             className={s.title}
           >
